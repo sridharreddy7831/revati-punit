@@ -45,12 +45,12 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#0A1C14]">
       <motion.div
-        initial={{ scale: 1.2, opacity: 0 }}
-        animate={{ scale: 1.1, opacity: 1 }}
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/13.jpg')`,
+          backgroundImage: `url('/14.jpg')`,
           filter: 'brightness(0.3)'
         }}
       />
