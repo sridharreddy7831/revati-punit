@@ -24,7 +24,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onOpen }) => {
             {/* Background image with brightness filter */}
             <div
                 className="absolute inset-0 bg-cover bg-center opacity-50 blur-sm scale-120"
-                style={{ backgroundImage: "url('/4.jpg')" }}            ></div>
+                style={{ backgroundImage: "url('/7.jpg')" }}            ></div>
 
             {/* Decorative Mandalas */}
             <motion.div
@@ -57,11 +57,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onOpen }) => {
                     </div>
                     <div className="w-12 h-0.5 bg-[#D4AF37] mx-auto mb-10"></div>
 
-                    <div className="text-[#D4AF37] font-traditional text-lg md:text-xl lg:text-2xl tracking-widest mb-2 uppercase leading-loose flex flex-col items-center gap-1">
-                        <span>The Naikar Family</span>
-                        <span className="font-script text-2xl md:text-3xl lg:text-4xl leading-none lowercase text-[#B76E79]">&</span>
-                        <span>The Obi Family</span>
-                    </div>
+
                     <p className="text-white/60 font-serif italic text-xs md:text-sm mb-8">
                         Warmly welcome you to the union of
                     </p>

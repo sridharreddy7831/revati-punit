@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
     const event = {
       title: "Wedding Ceremony of Revati & Punitkumar",
       details: "Join us to celebrate the union of Revati & Punitkumar",
-      location: "Spoorthi Resort, Beside Sukoon Colony Off Athani - Solapur, Ring Rd, Vijayapura, Karnataka 586103",
+      location: "Spoorthi Resort & Clubhouse, Beside Sukoon Colony off Athani-Solapur Ring Road, Vijayapura, Karnataka",
       start: "20260423T040000Z", // 09:30 AM IST is 04:00 AM UTC
       end: "20260423T050000Z"
     };

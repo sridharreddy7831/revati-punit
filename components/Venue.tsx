@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Venue: React.FC = () => {
-    const venueAddress = "Spoorthi Resort, Beside Sukoon Colony Off Athani - Solapur, Ring Rd, Vijayapura, Karnataka 586103";
-    const reliableMapUrl = `https://www.google.com/maps?q=Spoorthi+Resort+Vijayapura&output=embed`;
+    const venueAddress = "Spoorthi Resort & Clubhouse, Beside Sukoon Colony off Athani-Solapur Ring Road, Vijayapura, Karnataka";
+    const reliableMapUrl = `https://www.google.com/maps?q=Spoorthi+Resort+%26+Clubhouse+Vijayapura&output=embed`;
 
     return (
         <section id="venue" className="py-20 px-4 bg-transparent relative overflow-hidden">
@@ -38,7 +38,7 @@ const Venue: React.FC = () => {
                                 <span className="text-8xl">🏛️</span>
                             </div>
 
-                            <h3 className="text-2xl font-traditional text-[#B76E79] mb-4">Spoorthi Resort</h3>
+                            <h3 className="text-2xl font-traditional text-[#B76E79] mb-4">Spoorthi Resort & Clubhouse</h3>
                             <p className="text-[#FDF5E6] font-serif text-lg italic leading-relaxed mb-6">
                                 "{venueAddress}"
                             </p>

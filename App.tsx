@@ -45,8 +45,17 @@ const Layout: React.FC<{
   onGoHome: () => void;
 }> = ({ children, isPlaying, onToggleMusic, onStopMusic, onGoHome }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('hero');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Logic to highlight active section on scroll using IntersectionObserver
   useEffect(() => {
@@ -55,8 +64,8 @@ const Layout: React.FC<{
     const sections = ['hero', 'story', 'ceremonies', 'venue', 'gallery'];
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -20% 0px',
-      threshold: 0.1
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -88,7 +97,7 @@ const Layout: React.FC<{
     <div className="relative min-h-[100dvh] w-full max-w-[500px] mx-auto bg-transparent shadow-2xl overflow-hidden shadow-black/20">
 
       {/* Music Toggle Button */}
-      <div className="fixed bottom-6 right-6 z-[60]">
+      <div className={`fixed bottom-6 right-6 z-[60] transition-opacity duration-500 ${isScrolled || isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <button
           onClick={onToggleMusic}
           className="w-14 h-14 bg-[#D4AF37] text-[#B76E79] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,215,0,0.4)] border-2 border-white transition-all active:scale-90 hover:scale-105"
@@ -107,7 +116,7 @@ const Layout: React.FC<{
       </div>
 
       {/* Hamburger Navigation */}
-      <div className="fixed top-6 right-6 z-[60]">
+      <div className={`fixed top-6 right-6 z-[60] transition-opacity duration-500 ${isScrolled || isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="w-14 h-14 bg-[#D4AF37] text-[#B76E79] rounded-full flex flex-col items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(255,215,0,0.4)] border-2 border-white transition-all active:scale-90 hover:scale-105"
@@ -133,13 +142,8 @@ const Layout: React.FC<{
                     href={link.path}
                     onClick={() => {
                       setIsMenuOpen(false);
-                      // If navigating within the page, we might want to keep music?
-                      // But the user said "switching from that page" should stop it.
-                      // If they consider sections as "pages", they might want it to stop.
-                      // However, most users would want it to continue.
-                      // I will only stop it if they navigate to 'Home' specially.
                     }}
-                    className={`text-3xl md:text-5xl font-traditional transition-all hover:tracking-widest ${activeSection === link.id && location.pathname === '/' ? 'text-[#D4AF37] scale-110 blur-0' : 'text-white/40 hover:text-white'
+                    className={`text-3xl md:text-5xl font-traditional transition-all hover:tracking-widest ${activeSection === link.id ? 'text-[#D4AF37] scale-110 blur-0' : 'text-white/40 hover:text-white'
                       }`}
                   >
                     {link.label}
@@ -150,10 +154,10 @@ const Layout: React.FC<{
                     onClick={() => {
                       setIsMenuOpen(false);
                       if (link.id === 'hero') {
-                        onGoHome(); // This will stop music and show welcome screen
+                        onGoHome();
                       }
                     }}
-                    className={`text-3xl md:text-5xl font-traditional transition-all hover:tracking-widest ${location.pathname === link.path ? 'text-[#D4AF37] scale-110 blur-0' : 'text-white/40 hover:text-white'
+                    className={`text-3xl md:text-5xl font-traditional transition-all hover:tracking-widest ${activeSection === 'hero' ? 'text-[#D4AF37] scale-110 blur-0' : 'text-white/40 hover:text-white'
                       }`}
                   >
                     {link.label}
@@ -180,33 +184,49 @@ const Layout: React.FC<{
         </div>
       </footer>
 
-      <section className="py-6 border-t border-[#B76E79]/15 bg-[#0A1C14]/70 backdrop-blur-sm text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-[10px] tracking-[0.25em] uppercase opacity-80 font-bold text-[#FDF5E6]">
-            Designed by Sridhar Reddy Nalipi
+      <section className="relative py-10 border-t border-[#D4AF37]/20 bg-gradient-to-b from-[#0A1C14]/90 to-[#B76E79]/10 backdrop-blur-xl text-center overflow-hidden shadow-[0_-20px_40px_-20px_rgba(183,110,121,0.2)]">
+        {/* Decorative Top Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.4)]"></div>
+        <div className="max-w-4xl mx-auto px-4 flex flex-col items-center relative z-10">
+          {/* Company Logo & Name Inline */}
+          <a
+            href="https://uthsavinvites.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-4 mb-2 hover:scale-105 transition-transform duration-300 group"
+          >
+            <img src="/logo.png" alt="Uthsav Invites Logo" className="h-12 md:h-16 object-contain rounded-lg" />
+            <span className="text-3xl md:text-4xl font-script tracking-wider text-[#D4AF37] group-hover:text-[#FDF5E6] transition-colors drop-shadow-md">
+              Uthsav Invites
+            </span>
+          </a>
+
+          <p className="text-[9px] md:text-[10px] tracking-[0.15em] uppercase opacity-70 font-semibold text-[#FDF5E6]">
+            By Sridhar Reddy Nalipi
           </p>
-          <div className="mt-3 flex items-center justify-center gap-5 text-[11px] font-semibold tracking-widest uppercase text-[#FDF5E6]/70">
+
+          <div className="mt-5 flex items-center justify-center gap-5 sm:gap-8 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase text-[#FDF5E6]/80">
             <a
               href="https://wa.me/917386376302?text=Hi..%20I%20like%20that%20invitation%20very%20much.."
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#B76E79] transition-colors"
+              className="hover:text-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
             >
               WhatsApp
             </a>
             <a
-              href="https://bit.ly/nsr7831"
+              href="https://uthsavinvites.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#B76E79] transition-colors"
+              className="hover:text-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
             >
-              Portfolio
+              Website
             </a>
             <a
-              href="https://www.instagram.com/sridharreddy7831"
+              href="https://www.instagram.com/uthsavinvites"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#B76E79] transition-colors"
+              className="hover:text-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
             >
               Instagram
             </a>
@@ -239,14 +259,28 @@ const App: React.FC = () => {
     setPetals(newPetals);
 
     // Initialize audio
-    audioRef.current = new Audio('/1.mp3');
+    audioRef.current = new Audio('/2.mp3');
     audioRef.current.loop = true;
   }, []);
 
   const handleOpenInvitation = () => {
     setShowWelcome(false);
     if (audioRef.current) {
-      audioRef.current.play().catch(e => console.error("Audio play failed:", e));
+      audioRef.current.currentTime = 23;
+      audioRef.current.volume = 0;
+
+      audioRef.current.play().then(() => {
+        let vol = 0;
+        const fadeInterval = setInterval(() => {
+          if (vol < 1 && audioRef.current) {
+            vol = Math.min(1, vol + 0.05);
+            audioRef.current.volume = vol;
+          } else {
+            clearInterval(fadeInterval);
+          }
+        }, 100);
+      }).catch(e => console.error("Audio play failed:", e));
+
       setIsPlaying(true);
     }
   };
