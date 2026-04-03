@@ -14,7 +14,7 @@ export const WEDDING_DATE = new Date('2026-04-23T09:30:00');
 export const WEDDING_EVENTS: WeddingEvent[] = [
   {
     id: 'muhurtham',
-    name: 'ಶುಭ ಮುಹೂರ್ತ (Shubha Muhurtam',
+    name: 'ಶುಭ ಮುಹೂರ್ತ (Shubha Muhurtam)',
     date: 'April 23, 2026',
     time: '09:30 AM to 10:00 AM',
     venue: 'Spoorthi Resort & Clubhouse, Vijayapura, Karnataka',

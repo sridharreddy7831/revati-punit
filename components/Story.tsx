@@ -4,9 +4,6 @@ import { motion } from 'framer-motion';
 const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
   const lines = text.split("\n");
 
-  // Use Intl.Segmenter to safely split Kannada graphemes without breaking compound letters
-  const segmenter = new Intl.Segmenter('kn', { granularity: 'grapheme' });
-
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,16 +31,23 @@ const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
-      className="text-justify text-[#D4AF37] text-[15px] sm:text-lg md:text-xl italic leading-loose px-2 md:px-6 relative z-10 block space-y-4"
+      className="text-left text-[#D4AF37] text-[15px] sm:text-lg md:text-xl italic leading-relaxed px-2 md:px-6 relative z-10 block space-y-4"
     >
       {lines.map((line, lineIndex) => {
-        const chars = Array.from(segmenter.segment(line)).map(s => s.segment);
+        const words = line.split(" ");
         return (
-          <div key={lineIndex} className="block whitespace-pre-wrap">
-            {chars.map((char, charIndex) => (
-              <motion.span variants={child} key={charIndex} className="inline-block">
-                {char}
-              </motion.span>
+          <div key={lineIndex} className="block w-full">
+            {words.map((word, wordIndex) => (
+              <React.Fragment key={wordIndex}>
+                <span className="inline-block whitespace-nowrap">
+                  {Array.from(word).map((char, charIndex) => (
+                    <motion.span variants={child} key={charIndex} className="inline-block">
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+                {wordIndex !== words.length - 1 && " "}
+              </React.Fragment>
             ))}
           </div>
         );
