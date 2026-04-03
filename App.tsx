@@ -140,8 +140,17 @@ const Layout: React.FC<{
                 {link.path.startsWith('/#') ? (
                   <a
                     href={link.path}
-                    onClick={() => {
+                    onClick={(e) => {
                       setIsMenuOpen(false);
+                      if (location.pathname === '/') {
+                        e.preventDefault();
+                        const targetId = link.path.substring(2);
+                        const element = document.getElementById(targetId);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                          window.history.pushState(null, '', link.path);
+                        }
+                      }
                     }}
                     className={`text-3xl md:text-5xl font-traditional transition-all hover:tracking-widest ${activeSection === link.id ? 'text-[#D4AF37] scale-110 blur-0' : 'text-white/40 hover:text-white'
                       }`}
@@ -155,6 +164,7 @@ const Layout: React.FC<{
                       setIsMenuOpen(false);
                       if (link.id === 'hero') {
                         onGoHome();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                       }
                     }}
                     className={`text-3xl md:text-5xl font-traditional transition-all hover:tracking-widest ${activeSection === 'hero' ? 'text-[#D4AF37] scale-110 blur-0' : 'text-white/40 hover:text-white'
@@ -223,7 +233,7 @@ const Layout: React.FC<{
               Website
             </a>
             <a
-              href="https://www.instagram.com/uthsavinvites"
+              href="https://www.instagram.com/uthsav_invites"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"

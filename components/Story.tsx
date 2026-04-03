@@ -133,7 +133,7 @@ const Story: React.FC = () => {
           </div>
 
           {/* Text Matter Next */}
-          <TypewriterText text={"When two souls are meant to be together, life quietly brings them closer 🤍✨. From a simple first encounter to the promise of forever 💞💍, this beautiful journey has grown with love ❤️, shared dreams 🌸🌿, and endless blessings 🙏✨, leading to a lifetime of happiness together 💑🌷"} />
+          <TypewriterText text={"When two souls are meant to be together, life quietly brings them closer 🤍✨. From a simple first encounter to the promise of forever 💞💍, this beautiful journey has grown with love ❤️, shared dreams 🌸🌿, and endless blessings✨, leading to a lifetime of happiness together 💑🌷"} />
 
         </div>
       </motion.div>
