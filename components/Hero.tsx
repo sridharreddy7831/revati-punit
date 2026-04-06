@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
           transition={{ delay: 1.1, duration: 1 }}
           className="text-white font-traditional text-4xl md:text-7xl lg:text-8xl mb-4 drop-shadow-lg text-center"
         >
-          Revati <span className="text-[#D4AF37] font-script text-3xl md:text-6xl">&</span> Punitkumar
+          Punitkumar <span className="text-[#D4AF37] font-script text-3xl md:text-6xl">&</span>  Revati
         </motion.h1>
 
         <motion.div

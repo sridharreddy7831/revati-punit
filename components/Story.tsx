@@ -80,7 +80,7 @@ const Story: React.FC = () => {
           </motion.h2>
 
           <div className="flex flex-row justify-center items-center gap-6 sm:gap-12 overflow-visible relative z-10 mb-12">
-            {/* Bride First */}
+            {/* Groom First */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="text-center group"
@@ -90,13 +90,13 @@ const Story: React.FC = () => {
                   initial={{ rotate: -10, opacity: 0 }}
                   whileInView={{ rotate: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  src="/bride.jpg"
-                  alt="Revati"
+                  src="/groom.jpg"
+                  alt="Punitkumar"
                   className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full border-4 border-[#D4AF37] p-1 object-cover mb-2 shadow-lg group-hover:-rotate-3 transition-transform"
                 />
-                <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-[#B76E79] text-white text-[8px] sm:text-[10px] px-2 sm:px-4 py-0.5 sm:py-1 rounded-full font-bold border border-[#D4AF37] shadow-md">BRIDE</div>
+                <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-[#B76E79] text-white text-[8px] sm:text-[10px] px-2 sm:px-4 py-0.5 sm:py-1 rounded-full font-bold border border-[#D4AF37] shadow-md">GROOM</div>
               </div>
-              <p className="font-traditional font-bold mt-3 text-sm sm:text-xl text-[#B76E79]">Revati</p>
+              <p className="font-traditional font-bold mt-3 text-sm sm:text-xl text-[#B76E79]">Punitkumar</p>
             </motion.div>
 
             <motion.div
@@ -116,7 +116,7 @@ const Story: React.FC = () => {
               <div className="w-px h-12 bg-gradient-to-t from-transparent via-[#D4AF37] to-transparent mt-2"></div>
             </motion.div>
 
-            {/* Groom Second */}
+            {/* Bride Second */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="text-center group"
@@ -126,13 +126,13 @@ const Story: React.FC = () => {
                   initial={{ rotate: 10, opacity: 0 }}
                   whileInView={{ rotate: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  src="/groom.jpg"
-                  alt="Punitkumar"
+                  src="/bride.jpg"
+                  alt="Revati"
                   className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full border-4 border-[#D4AF37] p-1 object-cover mb-2 shadow-lg group-hover:rotate-3 transition-transform"
                 />
-                <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-[#B76E79] text-white text-[8px] sm:text-[10px] px-2 sm:px-4 py-0.5 sm:py-1 rounded-full font-bold border border-[#D4AF37] shadow-md">GROOM</div>
+                <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-[#B76E79] text-white text-[8px] sm:text-[10px] px-2 sm:px-4 py-0.5 sm:py-1 rounded-full font-bold border border-[#D4AF37] shadow-md">BRIDE</div>
               </div>
-              <p className="font-traditional font-bold mt-3 text-sm sm:text-xl text-[#B76E79]">Punitkumar</p>
+              <p className="font-traditional font-bold mt-3 text-sm sm:text-xl text-[#B76E79]">Revati</p>
             </motion.div>
           </div>
 

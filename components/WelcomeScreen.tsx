@@ -70,7 +70,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onOpen }) => {
                     className="mb-12"
                 >
                     <h1 className="text-white font-traditional text-4xl md:text-7xl mb-1 drop-shadow-2xl">
-                        Revati <span className="text-[#D4AF37] font-script text-3xl md:text-6xl">&</span> Punitkumar
+                        Punitkumar <span className="text-[#D4AF37] font-script text-3xl md:text-6xl">&</span> Revati
                     </h1>
 
                 </motion.div>
